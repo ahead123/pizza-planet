@@ -4,25 +4,47 @@
     <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700italic|Oswald' rel='stylesheet' type='text/css'>
     <link href="css/main.css" rel="stylesheet" />
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.10/angular.js"></script>
   </head>
-  <body>
+  <body ng-app="PizzaPlanetApp">
     <div class="header">
       <h1><span>Pizza</span><span>Planet</span></h1>
     </div>
 
-    <div class="main">
+    <div class="main" ng-controller="MainController">
       <div class="container">
         <h1>Specials for {{ today | date }}</h1>
         
         <h2>Appetizers</h2>
-        <div class="appetizers row">
+        <div class="appetizers row" ng-repeat="food in appetizers">
           <div class="item col-md-9">
-            <h3 class="name"> </h3>
-            <p class="description"> </p>
+            <h3 class="name">{{ food.name }}</h3>
+            <p class="description">{{ food.description }} </p>
           </div>
           <div class="price col-md-3">
-            <p class="price"> </p>
+            <p class="price">{{ food.price | currency }} </p>
+          </div>
+        </div>
+        
+        <h2>Mains</h2>
+        <div class="appetizers row" ng-repeat="main in mains">
+          <div class="item col-md-9">
+            <h3 class="name">{{ main.name }}</h3>
+            <p class="description">{{ main.description }} </p>
+          </div>
+          <div class="price col-md-3">
+            <p class="price">{{ main.price | currency }} </p>
+          </div>
+        </div>
+
+        <h2>Extras</h2>
+        <div class="appetizers row" ng-repeat="extra in extras">
+          <div class="item col-md-9">
+            <h3 class="name">{{ extra.name }}</h3>
+            <p class="description">{{ extra.description }} </p>
+          </div>
+          <div class="price col-md-3">
+            <p class="price">{{ extra.price | currency }} </p>
           </div>
         </div>
 
